@@ -58,3 +58,5 @@ INSERT INTO Player (FirstName, LastName, Age, TeamID) VALUES
 ('John', 'Doe', 25, 1),
 ('Jane', 'Smith', 22, 2),
 ('Jim', 'Brown', 30, 3);
+
+SELECT * FROM Player;
