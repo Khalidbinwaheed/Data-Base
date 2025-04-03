@@ -50,3 +50,6 @@ INSERT INTO Team (TeamName, TeamMascot) VALUES
 ('Red Sox', 'Wally the Green Monster'),
 ('Yankees', 'Yankee Doodle'),
 ('Dodgers', 'Dodger Dog');
+
+
+SELECT * FROM Team;
