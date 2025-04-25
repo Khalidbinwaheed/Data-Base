@@ -13,6 +13,19 @@
             "database": "baseballgame",
             "username": "root",
             "password": "KhALidS@6396"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "HotelManagment",
+            "username": "root",
+            "database": "hotelmanagment"
         }
     ]
 }
