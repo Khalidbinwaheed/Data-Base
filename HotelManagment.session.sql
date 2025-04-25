@@ -1,6 +1,6 @@
 use hotelmanagment;
 
-// Guest table
+-- 1. Create a guest table to store guest information.
 
 CREATE TABLE Guests (
     guest_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -16,7 +16,7 @@ CREATE TABLE Guests (
     registration_date DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-// Room Types TABLE
+-- 2. Create a room types table to categorize different types of rooms.
 
 CREATE TABLE RoomTypes (
     room_type_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -27,7 +27,7 @@ CREATE TABLE RoomTypes (
     amenities TEXT
 );
 
-//Rooms TABLE
+-- 3. Create a rooms table to store room details.
 
 CREATE TABLE Rooms (
     room_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -40,7 +40,7 @@ CREATE TABLE Rooms (
 );
 
 
-// Reservations TABLE
+-- 4. Create a reservations table to manage bookings.
 
 CREATE TABLE Reservations (
     reservation_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -57,7 +57,8 @@ CREATE TABLE Reservations (
     FOREIGN KEY (room_id) REFERENCES Rooms(room_id)
 );
 
-// Payments TABLE
+
+-- 5. Create a payments table to handle transactions.
 CREATE TABLE Payments (
     payment_id INT AUTO_INCREMENT PRIMARY KEY,
     reservation_id INT NOT NULL,
@@ -69,7 +70,7 @@ CREATE TABLE Payments (
     FOREIGN KEY (reservation_id) REFERENCES Reservations(reservation_id)
 );
 
-// Staff TABLE
+-- 6. Create a staff table to manage hotel employees.
 
 CREATE TABLE Staff (
     staff_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -83,7 +84,7 @@ CREATE TABLE Staff (
     department VARCHAR(50)
 );
 
-// Services TABLE
+-- 7. Create a services table to manage additional services offered by the hotel.
 
 CREATE TABLE Services (
     service_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -93,7 +94,7 @@ CREATE TABLE Services (
     availability BOOLEAN DEFAULT TRUE
 );
 
-// Service Requests TABLE
+-- 8. Create a room service table to manage room service orders.
 
 CREATE TABLE RoomService (
     service_log_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -108,6 +109,17 @@ CREATE TABLE RoomService (
     FOREIGN KEY (service_id) REFERENCES Services(service_id)
 );
 
+-- 9. Create a maintenance table to log maintenance requests.
+CREATE TABLE Maintenance (
+    maintenance_id INT AUTO_INCREMENT PRIMARY KEY,
+    room_id INT NOT NULL,
+    request_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    description TEXT,
+    status ENUM('requested', 'in-progress', 'completed', 'cancelled') DEFAULT 'requested',
+    staff_id INT,
+    FOREIGN KEY (room_id) REFERENCES Rooms(room_id),
+    FOREIGN KEY (staff_id) REFERENCES Staff(staff_id)
+);
 
 CREATE INDEX idx_guest_name ON Guests(last_name, first_name);
 CREATE INDEX idx_reservation_dates ON Reservations(check_in_date, check_out_date);
