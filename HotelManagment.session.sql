@@ -56,3 +56,15 @@ CREATE TABLE Reservations (
     FOREIGN KEY (guest_id) REFERENCES Guests(guest_id),
     FOREIGN KEY (room_id) REFERENCES Rooms(room_id)
 );
+
+// Payments TABLE
+CREATE TABLE Payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    reservation_id INT NOT NULL,
+    payment_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    amount DECIMAL(10,2) NOT NULL,
+    payment_method ENUM('credit card', 'debit card', 'cash', 'bank transfer', 'other'),
+    transaction_id VARCHAR(100),
+    status ENUM('pending', 'completed', 'failed', 'refunded') DEFAULT 'pending',
+    FOREIGN KEY (reservation_id) REFERENCES Reservations(reservation_id)
+);
