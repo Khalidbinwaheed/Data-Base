@@ -137,3 +137,24 @@ VALUES
 ('John', 'Doe', 'john.doe@email.com', '1234567890', '123 Main St', 'New York', 'USA'),
 ('Jane', 'Smith', 'jane.smith@email.com', '0987654321', '456 Oak Ave', 'Los Angeles', 'USA');
 
+-- Current Occupancy View
+CREATE VIEW CurrentOccupancy AS
+SELECT r.room_number, rt.type_name, g.first_name, g.last_name, 
+       res.check_in_date, res.check_out_date
+FROM Rooms r
+JOIN RoomTypes rt ON r.room_type_id = rt.room_type_id
+LEFT JOIN Reservations res ON r.room_id = res.room_id 
+    AND CURDATE() BETWEEN res.check_in_date AND res.check_out_date
+    AND res.status IN ('confirmed', 'checked-in')
+LEFT JOIN Guests g ON res.guest_id = g.guest_id;
+
+-- Revenue Report View
+CREATE VIEW RevenueReport AS
+SELECT 
+    YEAR(p.payment_date) AS year,
+    MONTH(p.payment_date) AS month,
+    SUM(p.amount) AS total_revenue,
+    COUNT(DISTINCT p.reservation_id) AS bookings
+FROM Payments p
+WHERE p.status = 'completed'
+GROUP BY YEAR(p.payment_date), MONTH(p.payment_date);
