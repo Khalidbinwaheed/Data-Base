@@ -115,3 +115,25 @@ CREATE INDEX idx_room_availability ON Rooms(availability);
 CREATE INDEX idx_payment_reservation ON Payments(reservation_id);
 
 
+-- Insert Room Types
+INSERT INTO RoomTypes (type_name, description, base_price, capacity, amenities)
+VALUES 
+('Standard', 'Standard room with one queen bed', 99.99, 2, 'TV, WiFi, Air Conditioning'),
+('Deluxe', 'Larger room with king bed and sitting area', 149.99, 2, 'TV, WiFi, Air Conditioning, Mini Bar'),
+('Suite', 'Spacious suite with separate living area', 199.99, 4, 'TV, WiFi, Air Conditioning, Mini Bar, Sofa Bed');
+
+-- Insert Rooms
+INSERT INTO Rooms (room_number, room_type_id, floor_number)
+VALUES 
+('101', 1, 1),
+('102', 1, 1),
+('201', 2, 2),
+('202', 2, 2),
+('301', 3, 3);
+
+-- Insert Guests
+INSERT INTO Guests (first_name, last_name, email, phone, address, city, country)
+VALUES 
+('John', 'Doe', 'john.doe@email.com', '1234567890', '123 Main St', 'New York', 'USA'),
+('Jane', 'Smith', 'jane.smith@email.com', '0987654321', '456 Oak Ave', 'Los Angeles', 'USA');
+
