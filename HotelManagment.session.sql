@@ -92,3 +92,18 @@ CREATE TABLE Services (
     price DECIMAL(10,2) NOT NULL,
     availability BOOLEAN DEFAULT TRUE
 );
+
+// Service Requests TABLE
+
+CREATE TABLE RoomService (
+    service_log_id INT AUTO_INCREMENT PRIMARY KEY,
+    reservation_id INT NOT NULL,
+    service_id INT NOT NULL,
+    request_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    delivery_time DATETIME,
+    quantity INT DEFAULT 1,
+    notes TEXT,
+    status ENUM('requested', 'in-progress', 'delivered', 'cancelled') DEFAULT 'requested',
+    FOREIGN KEY (reservation_id) REFERENCES Reservations(reservation_id),
+    FOREIGN KEY (service_id) REFERENCES Services(service_id)
+);
