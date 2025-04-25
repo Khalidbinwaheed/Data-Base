@@ -107,3 +107,11 @@ CREATE TABLE RoomService (
     FOREIGN KEY (reservation_id) REFERENCES Reservations(reservation_id),
     FOREIGN KEY (service_id) REFERENCES Services(service_id)
 );
+
+
+CREATE INDEX idx_guest_name ON Guests(last_name, first_name);
+CREATE INDEX idx_reservation_dates ON Reservations(check_in_date, check_out_date);
+CREATE INDEX idx_room_availability ON Rooms(availability);
+CREATE INDEX idx_payment_reservation ON Payments(reservation_id);
+
+
