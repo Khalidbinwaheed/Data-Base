@@ -1,6 +1,6 @@
 use hotelmanagment;
 
--- 1. Create a guest table to store guest information.
+-- --1. Create a guest table to store guest information.
 
 CREATE TABLE Guests (
     guest_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -120,3 +120,11 @@ CREATE TABLE Maintenance (
     FOREIGN KEY (room_id) REFERENCES Rooms(room_id),
     FOREIGN KEY (staff_id) REFERENCES Staff(staff_id)
 );
+
+
+INSERT INTO guests (first_name, last_name, email, phone, address, city, country, passport_number, date_of_birth)
+VALUES
+('khalid','khan', 'khan@gmail.com','+923333333333','lahore','lahore','pakistan','123456789','1990-01-01');
+
+SELECT * FROM guests;
+ DELETE from guests;
