@@ -90,3 +90,6 @@ WHERE b.color = 'red' OR b.color = 'green';
 SELECT sname, age
 FROM Sailors
 WHERE age = (SELECT MIN(age) FROM Sailors);
+
+SELECT COUNT(DISTINCT sname) AS unique_sailor_names
+FROM Sailors;
