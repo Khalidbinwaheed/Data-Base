@@ -93,3 +93,7 @@ WHERE age = (SELECT MIN(age) FROM Sailors);
 
 SELECT COUNT(DISTINCT sname) AS unique_sailor_names
 FROM Sailors;
+
+SELECT rating, AVG(age) AS average_age
+FROM Sailors
+GROUP BY rating;
