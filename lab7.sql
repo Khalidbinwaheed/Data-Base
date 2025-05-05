@@ -80,3 +80,10 @@ FROM Sailors s
 JOIN Reserves r1 ON s.sid = r1.sid
 JOIN Reserves r2 ON s.sid = r2.sid
 WHERE r1.bid <> r2.bid AND r1.day = r2.day;
+
+SELECT DISTINCT s.sid
+FROM Sailors s
+JOIN Reserves r ON s.sid = r.sid
+JOIN Boats b ON r.bid = b.bid
+WHERE b.color = 'red' OR b.color = 'green';
+
