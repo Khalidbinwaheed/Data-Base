@@ -60,3 +60,4 @@ INSERT INTO Player (FirstName, LastName, Age, TeamID) VALUES
 ('Jim', 'Brown', 30, 3);
 
 SELECT * FROM Player;
+
