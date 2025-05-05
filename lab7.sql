@@ -97,3 +97,8 @@ FROM Sailors;
 SELECT rating, AVG(age) AS average_age
 FROM Sailors
 GROUP BY rating;
+
+SELECT rating, AVG(age) AS average_age
+FROM Sailors
+GROUP BY rating
+HAVING COUNT(*) >= 2;
