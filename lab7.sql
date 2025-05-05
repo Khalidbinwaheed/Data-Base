@@ -64,3 +64,9 @@ JOIN Reserves r ON b.bid = r.bid
 JOIN Sailors s ON r.sid = s.sid
 WHERE s.sname = 'khalid bin waheed';
 
+SELECT s.sname
+FROM Sailors s
+JOIN Reserves r ON s.sid = r.sid
+JOIN Boats b ON r.bid = b.bid
+WHERE b.color = 'red'
+ORDER BY s.age;
