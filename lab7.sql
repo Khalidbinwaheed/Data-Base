@@ -87,3 +87,6 @@ JOIN Reserves r ON s.sid = r.sid
 JOIN Boats b ON r.bid = b.bid
 WHERE b.color = 'red' OR b.color = 'green';
 
+SELECT sname, age
+FROM Sailors
+WHERE age = (SELECT MIN(age) FROM Sailors);
