@@ -49,3 +49,18 @@ INSERT INTO reserves (sid, bid, day) VALUES
 (5, 5, '2023-10-05');
 
 
+
+SELECT * FROM reserves;
+
+
+SELECT s.*
+FROM Sailors s
+JOIN Reserves r ON s.sid = r.sid
+WHERE r.bid = 1;
+
+SELECT b.bname
+FROM Boats b
+JOIN Reserves r ON b.bid = r.bid
+JOIN Sailors s ON r.sid = s.sid
+WHERE s.sname = 'khalid bin waheed';
+
